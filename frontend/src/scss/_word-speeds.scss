@@ -1,0 +1,22 @@
+/* Styles for per-word speed labels. Tweak colors/spacing to fit your theme. */
+
+.word-speed-label {
+  display: inline-block;
+  font-size: 0.65rem;        /* smaller text */
+  line-height: 1;
+  font-weight: 500;
+  color: var(--muted-text-color, rgba(0, 0, 0, 0.65));
+  pointer-events: none;
+  margin-bottom: 0.15rem;
+  transform: translateY(-0.35rem); /* nudge above the word */
+  white-space: nowrap;
+}
+
+/* If words are positioned absolutely in the UI, you may need a variant:
+.word .word-speed-label {
+  position: absolute;
+  top: -0.9rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+*/
