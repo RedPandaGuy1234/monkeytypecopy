@@ -223,6 +223,16 @@ export const TypingSpeedUnitSchema = z.enum([
 ]);
 export type TypingSpeedUnit = z.infer<typeof TypingSpeedUnitSchema>;
 
+// New settings for per-word speed labels
+export const WordSpeedModeSchema = z.enum(["off", "single", "averaged"]);
+export type WordSpeedMode = z.infer<typeof WordSpeedModeSchema>;
+
+export const WordSpeedStepSchema = z.number().int().min(1).max(20);
+export type WordSpeedStep = z.infer<typeof WordSpeedStepSchema>;
+
+export const WordSpeedRequireFullWindowSchema = z.boolean();
+export type WordSpeedRequireFullWindow = boolean;
+
 export const AdsSchema = z.enum(["off", "result", "on", "sellout"]);
 export type Ads = z.infer<typeof AdsSchema>;
 
@@ -426,7 +436,7 @@ export const ConfigSchema = z
     minAcc: MinimumAccuracySchema,
     minAccCustom: MinimumAccuracyCustomSchema,
     minBurst: MinimumBurstSchema,
-    minBurstCustomSpeed: MinimumBurstCustomSpeedSchema,
+    minBurstCustomSpeed: MinWpmCustomSpeedSchema,
     britishEnglish: z.boolean(),
     funbox: FunboxSchema,
     customLayoutfluid: CustomLayoutFluidSchema,
@@ -486,6 +496,12 @@ export const ConfigSchema = z
     keymapLegendStyle: KeymapLegendStyleSchema,
     keymapKeys: KeymapKeysSchema,
     keymapSize: KeymapSizeSchema,
+
+    // per-word speed labels
+    showWordSpeeds: z.boolean(),
+    wordSpeedMode: WordSpeedModeSchema,
+    wordSpeedStep: WordSpeedStepSchema,
+    wordSpeedRequireFullWindow: WordSpeedRequireFullWindowSchema,
 
     // theme
     flipTestColors: z.boolean(),
